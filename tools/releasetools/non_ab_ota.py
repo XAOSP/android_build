@@ -213,7 +213,21 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   # Dump fingerprints
   script.Print("Target: {}".format(target_info.fingerprint))
+  s_rom_version = target_info.GetBuildProp("ro.x.display.version")
+  s_android_version = target_info.GetBuildProp("ro.build.version.release")
+  s_manufacturer = target_info.GetBuildProp("ro.product.manufacturer")
+  s_device = target_info.GetBuildProp("ro.product.device")
 
+  script.Print(" ");
+  script.Print(" ");
+  script.Print("=============================================");
+  script.Print("=============================================");
+  script.Print("ROM version    : %s"%(s_rom_version));
+  script.Print("Android version: %s"%(s_android_version));
+  script.Print("Manufacturer   : %s"%(s_manufacturer));
+  script.Print("Device         : %s"%(s_device));
+  script.Print("=============================================");
+  script.Print(" ");
   device_specific.FullOTA_InstallBegin()
 
   CopyInstallTools(output_zip)
